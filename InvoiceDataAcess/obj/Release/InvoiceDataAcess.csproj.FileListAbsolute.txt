@@ -1,0 +1,6 @@
+E:\INTRNSHIP Projects\InvoiceSystem\InvoiceSystem\InvoiceDataAcess\bin\Release\InvoiceDataAcess.dll
+E:\INTRNSHIP Projects\InvoiceSystem\InvoiceSystem\InvoiceDataAcess\bin\Release\InvoiceDataAcess.pdb
+E:\INTRNSHIP Projects\InvoiceSystem\InvoiceSystem\InvoiceDataAcess\obj\Release\InvoiceDataAcess.csprojAssemblyReference.cache
+E:\INTRNSHIP Projects\InvoiceSystem\InvoiceSystem\InvoiceDataAcess\obj\Release\InvoiceDataAcess.csproj.CoreCompileInputs.cache
+E:\INTRNSHIP Projects\InvoiceSystem\InvoiceSystem\InvoiceDataAcess\obj\Release\InvoiceDataAcess.dll
+E:\INTRNSHIP Projects\InvoiceSystem\InvoiceSystem\InvoiceDataAcess\obj\Release\InvoiceDataAcess.pdb

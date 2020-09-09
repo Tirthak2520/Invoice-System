@@ -1,0 +1,99 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.Master.cs" Inherits="InvoiceSystem.Master.Site" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>master page</title>
+    <webopt:BundleReference runat="server" Path="~/Content/css" />  
+   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    
+    <script type="text/javascript">
+        function calculate_price(txt_Quantity, txt_Price, txtDiscount, txtTotal)
+        {
+            var t1 = document.getElementById(txt_Quantity);
+            var t2 = document.getElementById(txt_Price);
+            var t3 = document.getElementById(txtDiscount);
+            var t4 = document.getElementById(txtTotal);
+            t4.innerHTML = t1.value * t2.value - t3.value;
+            var t5 = document.getElementsByClassName("Invoice_total");
+            var total = 0;
+            for (var i = 0; i < t5.length; i++) {
+                if (t5[i].innerHTML != undefined && t5[i].innerHTML != null && t5[i].innerHTML != "") {
+                    total = total + +t5[i].innerHTML;
+                }
+            }
+            var a = (total * 5) / 100;
+            var t6 = document.getElementsByClassName("subtotal");
+            var t7 = document.getElementsByClassName("gst");
+            var t8 = document.getElementsByClassName("total");
+            t6[0].value = total;
+            t7[0].value = a;
+            t8[0].value=(total+a);           
+        }
+
+    </script>
+   <script type="text/javascript">
+       $(document).ready(function () {
+           var url = window.location.pathname;
+           var substr = url.split('/');
+           var urlaspx = substr[substr.length - 1];
+           $('.nav').find('.active').removeClass('active');
+           $('.nav li a ').each(function () {            
+               if (this.href.indexOf(urlaspx) >= 0) {
+                   $(this).parent().addClass('active');
+               }
+           });
+       });
+</script>
+  
+</head>
+<body>
+    <style>
+      
+    </style>
+    <form id="form1" runat="server">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="Home.aspx" style="font-size:20px">Invoice System</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li class="active" id="user"><a href="User.aspx" style="font-size:16px">User</a></li>
+                    <li id="customer"><a href="Customer.aspx" style="font-size:16px">Customer</a></li>
+                    <li class="dropdown" id="Invoice"><a class=" dropdown-toggle dropdown-toggle-split" role="button" id="dropdownMenuLink" data-toggle="dropdown" style="font-size:16px"  >Invoice <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="invoice.aspx">Create</a></li>
+                            <li><a href="List.aspx">List</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><asp:LinkButton CausesValidation="false" runat="server"  class=" btn btn-primary" ID="btn_Logout" OnClick="btn_Logout_Click"  style="margin-right: -70px;color:white;text-align:center">Log Out</asp:LinkButton></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="jumbotron header-text" style="text-align:left;font-size:25px;height:50px;margin-top:20px;font-weight:bold;padding-left:25px;">
+        </div>
+          <script type="text/javascript">
+              document.getElementsByClassName("header-text")[0].innerHTML = "Dash Board";
+          </script>
+        <div>
+            <div>
+                <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                    <form class="form-horizontal" action="/action_page.php">
+                    </form>
+                </asp:ContentPlaceHolder>
+            </div>
+            <hr />
+            <footer>
+                <nav class="navbar navbar-inverse navbar-fixed-bottom">
+                    <p style="font-size:18px; text-align: center; margin-top: 12px; color: white">&copy; <%: DateTime.Now.Year %> -Tirthak Bhingaradiya</p>
+                </nav>
+            </footer>
+        </div>
+    </form>    
+</body>
+</html>
